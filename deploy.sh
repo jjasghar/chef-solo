@@ -7,9 +7,9 @@ host="${1:-deployer@j2a.ath.cx}"
 ssh-keygen -R "${host#*@} 2> /dev/null
 
 tar cj . | ssh -o 'StrictHostKeyChecking no' "$host" '
-sudo rm -rf ~/chef &&
-mkdir ~/chef &&
-cd ~/chef &&
+sudo rm -rf ~/chef-solo &&
+mkdir ~/chef-solo &&
+cd ~/chef-solo &&
 tar xj &&
 sudo bash install.sh'
 
