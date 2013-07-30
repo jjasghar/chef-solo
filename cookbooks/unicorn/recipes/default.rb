@@ -19,3 +19,58 @@
 #
 
 gem_package "unicorn"
+
+template "/etc/init.d/unicorn-init.sh" do
+  source "unicorn-init.sh.erb"
+  mode 0755
+  owner "root"
+  group "root"
+end
+
+
+directory "/var/www/rails/" do
+  owner "www-data"
+  group "www-data"
+  mode 0644
+  action :create
+end
+
+directory "/var/www/rails/releases/" do
+  owner "www-data"
+  group "www-data"
+  mode 0644
+  action :create
+end
+
+directory "/var/www/rails/shared/" do
+  owner "www-data"
+  group "www-data"
+  mode 0644
+  action :create
+end
+
+directory "/var/www/rails/releases/bootstrapped" do
+  owner "www-data"
+  group "www-data"
+  mode 0644
+  action :create
+end
+
+link "/var/www/rails/current" do
+  to "/var/www/rails/releases/bootstrapped" 
+  only_if "test ! -L /var/www/rails/current"
+end
+
+directory "/var/www/rails/current/config/" do
+  owner "www-data"
+  group "www-data"
+  mode 0644
+  action :create
+end
+
+template "/var/www/rails/current/config/unicorn.rb" do
+  source "unicorn.rb.erb"
+  mode 0755
+  owner "www-data"
+  group "www-data"
+end
