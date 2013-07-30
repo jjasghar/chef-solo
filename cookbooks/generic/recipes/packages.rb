@@ -16,3 +16,11 @@ cookbook_file "vimrc" do
   path "/root/.vimrc"
   action :create_if_missing
 end
+
+%w{gist serverspec}.each do |gem|
+  gem_package gem do
+    action [:install]
+  end
+end
+
+
