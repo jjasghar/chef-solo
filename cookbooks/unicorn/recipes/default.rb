@@ -27,6 +27,12 @@ template "/etc/init.d/unicorn-init.sh" do
   group "root"
 end
 
+directory "/var/www/" do
+  owner "www-data"
+  group "www-data"
+  mode 0644
+  action :create
+end
 
 directory "/var/www/rails/" do
   owner "www-data"
