@@ -52,4 +52,5 @@ setup_tmux_layout() {
 	    tmux split-window -v
 }
 
-
+alias unicorn_start="unicorn_rails -c /var/www/rails/releases/bootstrapped/config/unicorn.rb -D"
+alias unicorn_stop="echo 'you need to figure this out'"

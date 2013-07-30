@@ -26,7 +26,6 @@ working_directory "<%= node[:unicorn][:working_directory] %>" # available in 0.9
 # listen on both a Unix domain socket and a TCP port,
 # we use a shorter backlog for quicker failover when busy
 listen "<%= node[:unicorn][:listen] %>", :backlog => <%= node[:unicorn][:backlog] %>
-listen 8080, :tcp_nopush => true
 
 # nuke workers after 30 seconds instead of 60 seconds (the default)
 timeout <%= node[:unicorn][:worker_timeout] %>

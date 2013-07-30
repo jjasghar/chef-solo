@@ -19,6 +19,7 @@
 #
 
 gem_package "unicorn"
+gem_package "rails"
 
 template "/etc/init.d/unicorn-init.sh" do
   source "unicorn-init.sh.erb"
@@ -54,6 +55,22 @@ directory "/var/www/rails/shared/" do
   mode 0644
   action :create
 end
+
+directory "/var/www/rails/shared/pids" do
+  owner "www-data"
+  group "www-data"
+  mode 0644
+  action :create
+end
+
+directory "/var/www/rails/shared/log" do
+  owner "www-data"
+  group "www-data"
+  mode 0644
+  action :create
+end
+
+
 
 directory "/var/www/rails/releases/bootstrapped" do
   owner "www-data"

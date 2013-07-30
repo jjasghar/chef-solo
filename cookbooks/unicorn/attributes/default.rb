@@ -1,5 +1,6 @@
 default[:unicorn][:preload_app] = true
 default[:unicorn][:worker_processes] = 2
+default[:unicorn][:backlog] = 64
 default[:unicorn][:worker_timeout] = 30
 default[:unicorn][:config_file] = "/var/www/rails/shared/unicorn.rb"
 default[:unicorn][:listen] = "/tmp/unicorn.rails.sock"
