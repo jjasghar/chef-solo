@@ -7,6 +7,12 @@ How to bootstrap a box
 apt-get update && apt-get install git-core -y && git clone git@github.com:jjasghar/chef-solo.git && cd chef-solo && ./install.sh
 ```
 
+How to bootstrap a nginx_unicorn box
+
+```bash
+apt-get update && apt-get install git-core -y && git clone git@github.com:jjasghar/chef-solo.git && cd chef-solo && git checkout nginx_unicorn && ./install.sh
+```
+
 
 TODO
 ----
