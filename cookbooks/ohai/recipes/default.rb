@@ -47,8 +47,8 @@ end
 
 # only reload ohai if new plugins were dropped off OR
 # node['ohai']['plugin_path'] does not exists in client.rb
-if reload_ohai ||
-  !(::IO.read(Chef::Config[:config_file]) =~ /Ohai::Config\[:plugin_path\]\s*<<\s*["']#{node['ohai']['plugin_path']}["']/)
-
-  resource.run_action(:reload)
-end
+#if reload_ohai ||
+#  !(::IO.read(Chef::Config[:config_file]) =~ /Ohai::Config\[:plugin_path\]\s*<<\s*["']#{node['ohai']['plugin_path']}["']/)
+#
+#  resource.run_action(:reload)
+#end

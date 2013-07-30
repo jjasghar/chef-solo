@@ -25,7 +25,7 @@ fi
 # Default linux/unix PS1
 #export PS1='\[\033[1;37m\]\t\[\033[0m\] [\u@\[\033[0;37m\]\h\[\033[0m\]] \w \$ '
 # Default  mac PS1
-export PS1='\t \h \W >$(__git_ps1) '
+export PS1='\t \h \W >$ '
 #export PS1='\[$green$bold]\t\[$reset\] [\\h\[\033[0m\]] \W >\033[31m\]$(__git_ps1)\[\033[00m\] '
 
 #
