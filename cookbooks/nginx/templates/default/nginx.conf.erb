@@ -24,8 +24,8 @@ user nobody nogroup; # for systems with a "nogroup"
 # user nobody nobody; # for systems with "nobody" as a group instead
 
 # Feel free to change all paths to suite your needs here, of course
-pid <%= default[:nginx][:pid] %>
-error_log <%= default[:nginx][:error_log] %>
+pid <%= node['nginx']['pid'] %>
+error_log <%= node['nginx']['error_log'] %>
 
 events {
   worker_connections 1024; # increase if you have lots of clients
@@ -39,10 +39,10 @@ http {
   include mime.types;
 
   # fallback in case we can't determine a type
-  default_type application/octet-stream;
+  node_type application/octet-stream;
 
   # click tracking!
-  access_log <%= default[:nginx][:access_log] %> combined;
+  access_log <%= node['nginx']['access_log'] %> combined;
 
   # you generally want to serve static files with nginx since neither
   # Unicorn nor Rainbows! is optimized for it at the moment
@@ -74,7 +74,7 @@ http {
     # single worker for timing out).
 
     # for UNIX domain socket setups:
-    server unix:<%= default[:nginx][:unix_sock] %> fail_timeout=0;
+    server unix:<%= node['nginx']['unix_sock'] %> fail_timeout=0;
 
     # for TCP setups, point these to your backend servers
     # server 192.168.0.7:8080 fail_timeout=0;
@@ -84,11 +84,11 @@ http {
 
   server {
     # enable one of the following if you're on Linux or FreeBSD
-    # listen 80 default deferred; # for Linux
-    # listen 80 default accept_filter=httpready; # for FreeBSD
+    # listen 80 node deferred; # for Linux
+    # listen 80 node accept_filter=httpready; # for FreeBSD
 
     # If you have IPv6, you'll likely want to have two separate listeners.
-    # One on IPv4 only (the default), and another on IPv6 only instead
+    # One on IPv4 only (the node), and another on IPv6 only instead
     # of a single dual-stack listener.  A dual-stack listener will make
     # for ugly IPv4 addresses in $remote_addr (e.g ":ffff:10.0.0.1"
     # instead of just "10.0.0.1") and potentially trigger bugs in
@@ -104,7 +104,7 @@ http {
     keepalive_timeout 5;
 
     # path for static files
-    root <%= default[:nginx][:public_dir] %>;
+    root <%= node['nginx']['public_dir'] %>;
 
     # Prefer to serve static files directly from nginx to avoid unnecessary
     # data copies from the application server.
@@ -150,7 +150,7 @@ http {
     # Rails error pages
     error_page 500 502 503 504 /500.html;
     location = /500.html {
-    root <%= default[:nginx][:public_dir] %>;
+    root <%= node['nginx']['public_dir'] %>;
     }
   }
 }
