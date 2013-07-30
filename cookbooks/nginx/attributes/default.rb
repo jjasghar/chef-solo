@@ -87,3 +87,8 @@ default['nginx']['types_hash_bucket_size'] = 64
 
 default['nginx']['proxy_read_timeout'] = nil
 default['nginx']['client_max_body_size'] = nil
+
+default['nginx']['error_log'] = "/tmp/nginx.error.log"
+default['nginx']['access_log'] = "/tmp/nginx.access.log"
+default['nginx']['unix_sock'] = "/tmp/unicorn.rails.sock"
+default['nginx']['public_dir'] = "/var/www/rails/currect/public"
