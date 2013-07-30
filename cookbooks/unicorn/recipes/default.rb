@@ -19,7 +19,6 @@
 #
 
 gem_package "unicorn"
-gem_package "rails"
 
 template "/etc/init.d/unicorn-init.sh" do
   source "unicorn-init.sh.erb"
