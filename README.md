@@ -12,7 +12,9 @@ TODO
 ----
 
 * figure out deploy keys [here](https://help.github.com/articles/managing-deploy-keys)
-* add nginx cookbook
-* add unicorn cookbook
+* ~~add nginx cookbook~~ 
+* ~~add unicorn cookbook~~
+* need to get unicorn and nginx to talk to one another
 * use berkshelf
 * get deploy resource to work with github cloning
+ * https://github.com/jjasghar/app-server-arena/blob/master/app.rb
